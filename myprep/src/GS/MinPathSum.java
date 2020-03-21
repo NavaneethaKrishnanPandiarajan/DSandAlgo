@@ -1,5 +1,5 @@
 //$Id$
-package GoldManSachs;
+package GS;
 
 public class MinPathSum {
 

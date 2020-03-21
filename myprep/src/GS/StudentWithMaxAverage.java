@@ -1,5 +1,5 @@
 //$Id$
-package GoldManSachs;
+package GS;
 
 import java.util.HashMap;
 import java.util.Map;
