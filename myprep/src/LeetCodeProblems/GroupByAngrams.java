@@ -1,5 +1,8 @@
 class GroupByAngrams {
     
+    
+    // Explanation - https://leetcode.wang/leetCode-49-Group-Anagrams.html
+    
     public List<List<String>> groupAnagrams(String[] strs) {
         
         HashMap<String, List<String>> map = new HashMap();
