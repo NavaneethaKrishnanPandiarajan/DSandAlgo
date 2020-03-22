@@ -5,7 +5,7 @@ package arraysProgram;
  * Find the number occuring odd number of times in a given array of size 'n' 
  * 
  * 
- * @author nava-4403
+ * 
  *
  *
  *  The Best Solution is to do bitwise XOR of all the elements. XOR of all elements gives us odd occurring element.
