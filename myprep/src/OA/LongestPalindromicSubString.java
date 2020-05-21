@@ -17,6 +17,7 @@ public class LongestPalindromicSubString
 		
 		dp = new int[n][n];
 		
+		// length = 1 . and for length = 2.
 		for(int i = 0 ; i<n  ; i++)
 		{
 			dp[i][i] = 1;
@@ -27,14 +28,18 @@ public class LongestPalindromicSubString
 			}
 		}
 		
-		for(int i=n-2; i>0 ;i--)  // we have to come from bottom  
+		// length = k (k=2..len)	
+		for(int k=2 ; k<n ; k++)
 		{
-			for(int j=i; j<n ;j++)
-			{	
+			for(int i=0 ; i+k <n ; i++ )
+			{
+				int j = i+k;
+				
 				if( dp[i+1][j-1] == 1 && ( s.charAt(i) == s.charAt(j) ) )
 				{
 					dp[i][j] = 1;
 				}
+				
 			}
 		}
 		
