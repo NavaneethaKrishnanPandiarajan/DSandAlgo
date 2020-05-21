@@ -1,3 +1,4 @@
+//$Id$
 package AM;
 import java.util.LinkedList;
 import java.util.List;
@@ -48,10 +49,8 @@ public class ZombieMatrix
 {
 	
 	
-	public int minHours(int rows, int columns, int[][] grid) 
+	public static int minHours(int rows, int columns, int[][] grid) 
 	{
-		int days  = 0;
-		
 		int humans  = 0 ;
 		
 		Queue<int[]> queue = new LinkedList<int[]>();
@@ -71,6 +70,7 @@ public class ZombieMatrix
 			}
 		}
 		
+		int days  = 0;
 		int[][] dirs = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
 		
 		while( !queue.isEmpty()  && humans > 0)
@@ -98,7 +98,7 @@ public class ZombieMatrix
                 }
 			}
 		
-			days ++;
+			days++;
 		}
 		
 		return days;
