@@ -1,5 +1,5 @@
 //$Id$
-package OOAD.meetingscheduler;
+package lowLevelDesign.MeetingScheduler;
 
 public class NoMeetingRoomsAvailableException extends Exception
 {
