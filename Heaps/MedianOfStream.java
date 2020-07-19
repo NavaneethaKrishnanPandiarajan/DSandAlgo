@@ -45,11 +45,7 @@ public class MedianOfStream
             return ( minHeap.peek() + maxHeap.peek() ) / 2.0 ;
         }
 	}
-	
-	public static void main(String [] args )
-	{
-		
-	}
+
 }
 
 
