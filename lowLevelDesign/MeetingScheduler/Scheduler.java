@@ -1,5 +1,5 @@
 //$Id$
-package OOAD.meetingscheduler;
+package lowLevelDesign.MeetingScheduler;
 
 import java.util.ArrayList;
 import java.util.Date;
