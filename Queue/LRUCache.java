@@ -4,6 +4,7 @@ package Queue;
 import java.util.HashMap;
 import java.util.Map;
 
+// Need to redesign this code for better handling of multithreaded environment
 public class LRUCache 
 {
         class DNode 
