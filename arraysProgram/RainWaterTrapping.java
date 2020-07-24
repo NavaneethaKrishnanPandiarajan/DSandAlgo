@@ -5,6 +5,7 @@ public class RainWaterTrapping {
 
 	public static int totalWaterTrapped(int arr[])
 	{
+		if(arr.length<=2 ) return 0;
 		
 		int left[] = new int[arr.length];
 		int right[] = new int[arr.length];
@@ -18,7 +19,7 @@ public class RainWaterTrapping {
 		
 		right[arr.length-1] = arr[arr.length-1];
 		
-		for(int i=arr.length-2 ; i>0 ; --i)
+		for(int i=arr.length-2 ; i>=0 ; --i)
 		{
 			right[i] = Math.max(right[i+1], arr[i]);
 		}
