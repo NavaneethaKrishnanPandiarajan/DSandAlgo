@@ -6,54 +6,71 @@ import java.util.LinkedList;
 
 public class MaximumSlidingWindow 
 {
-	
-	public static void main(String [] args)
+	public int[] maxSlidingWindow(int[] arr, int k) 
 	{
-		int arr[] ={1, 2, 3, 1, 4, 5, 2, 3, 6};
+        
+		if ( arr == null || k <= 0 || arr.length == 0) 
+		{
+			return new int[0];
+		}
 		
-		printMax(arr ,arr.length, 3);
-	}
-	
-	 static void printMax(int arr[], int n, int k) 
-	    { 
-	        // Create a Double Ended Queue, Qi that will store indexes of array elements 
-	        // The queue will store indexes of useful elements in every window and it will 
-	        // maintain decreasing order of values from front to rear in Qi, i.e., 
-	        // arr[Qi.front[]] to arr[Qi.rear()] are sorted in decreasing order 
-	        Deque<Integer> Qi = new LinkedList<Integer>(); 
-	  
-	        /* Process first k (or first window) elements of array */
-	        int i; 
-	        for (i = 0; i < k; ++i) { 
-	            // For every element, the previous smaller elements are useless so 
-	            // remove them from Qi 
-	            while (!Qi.isEmpty() && arr[i] >= arr[Qi.peekLast()]) 
-	                Qi.removeLast(); // Remove from rear 
-	  
-	            // Add new element at rear of queue 
-	            Qi.addLast(i); 
-	        } 
-	  
-	        // Process rest of the elements, i.e., from arr[k] to arr[n-1] 
-	        for (; i < n; ++i) { 
-	            // The element at the front of the queue is the largest element of 
-	            // previous window, so print it 
-	            System.out.print(arr[Qi.peek()] + " "); 
-	  
-	            // Remove the elements which are out of this window 
-	            while ((!Qi.isEmpty()) && Qi.peek() <= i - k) 
-	                Qi.removeFirst(); 
-	  
-	            // Remove all elements smaller than the currently 
-	            // being added element (remove useless elements) 
-	            while ((!Qi.isEmpty()) && arr[i] >= arr[Qi.peekLast()]) 
-	                Qi.removeLast(); 
-	  
-	            // Add current element at the rear of Qi 
-	            Qi.addLast(i); 
-	        } 
-	  
-	        // Print the maximum element of last window 
-	        System.out.print(arr[Qi.peek()]); 
-	    } 
+		int n = arr.length;
+		int ri = 0;
+		int[] result = new int[n-k+1];
+		
+		
+		/***  list.peekFirst always going to give the index of the maximum of the particular window **/
+		
+		/***  In order to achieve this every element adding we are checking two aspects **/
+		
+		/**    1)  Remove the elements from the list if the corresponding index of the element goes out of range **/
+		
+		/**    2)  Remove the elements that are smaller in the window while adding the elements index in the list
+		 			i.e - >  For every element, the previous smaller elements are useless                        **/
+		 		
+		   				
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		
+		for(int i=0; i<k; i++)
+		{
+			int currElement = arr[i];
+			
+			while( !list.isEmpty() &&  arr[list.peekLast()] <= currElement )
+			{
+				list.removeLast();
+			}
+			
+			list.addLast(i);
+		}
+
+		for( int i=k; i<n; i++ )
+		{
+			int maxElement = arr[list.peekFirst()];
+			
+			result[ri++] = maxElement;
+			
+			int currElement = arr[i];
+			
+			/**  this is the reason that we are storing the index instead of the element in the list   **/
+			/**  remove the elements that are not belongs to this window **/
+			while( !list.isEmpty() &&  list.peekFirst() <= i-k ) 
+			{
+				list.removeFirst();
+			}
+			
+			while( !list.isEmpty() &&  arr[list.peekLast()] <= currElement )
+			{
+				list.removeLast();
+			}
+			
+			list.addLast(i);	
+		}
+		
+		
+		int maxElement = arr[list.peekFirst()];
+		result[ri++] = maxElement;
+		
+		return result;
+	 
+    }
 }
